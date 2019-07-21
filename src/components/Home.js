@@ -1,24 +1,42 @@
 import React from 'react'
-import { push } from 'connected-react-router'
-import { bindActionCreators } from 'redux'
-import { connect } from 'react-redux'
-import {Link} from "react-router-dom";
+import Button from "react-bootstrap/Button";
+import ConfirmationModal from "./modal/ConfirmationModal";
+import {showConfirmationModal} from "../state/actions";
+import {connect} from "react-redux";
 
-/*@connect(
-    (state, props) => {
-        changePage
-    },
-    (dispatch) => {
-        changePage: () => console.log("wut")
+class Home extends React.Component {
+
+    constructor(props) {
+        super(props);
+        this.state = {
+            showModal: false,
+        }
     }
 
-)*/
-export default class Home extends React.Component {
     render = () => (
         <div>
             <h1>Home</h1>
             <p>Welcome home!</p>
-            <Link to="/">Home</Link> <Link to="/about">Hello</Link>
+
+            <Button onClick={this.props.openConfirmationModal}>Open redux modal</Button>
+
+
+            <Button onClick={() => this.setState({showModal: true})}>Open modal</Button>
+            <ConfirmationModal
+                show={this.state.showModal}
+                onHide={() => this.setState({showModal: false})}/>
         </div>
     )
 }
+
+const mapStateToProps = (state) => {
+    return {};
+};
+
+const mapDispatchToProps = (dispatch, ownProps) => {
+    return {
+        openConfirmationModal: () => dispatch(showConfirmationModal("msg", "cb"))
+    }
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Home)
