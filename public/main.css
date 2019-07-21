@@ -2,3 +2,29 @@ video {
   width: 100%    !important;
   height: auto   !important;
 }
+
+.error-background {
+  background-image: url("404background.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+  height: 94vh;
+}
+
+.padding-10-percent {
+  padding-top: 30vh;
+}
+
+.main-content {
+  background: #e7eaed;
+  height: 100vh;
+}
+
+.file-upload {
+  background: #ffffff;
+  border: 2px darkgray dashed;
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}

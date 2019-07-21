@@ -1,4 +1,4 @@
-import {CLOSE_MODAL, CONFIRMATION, SHOW_CONFIRMATION_MODAL} from "./constants/modalConstants";
+import {CLOSE_MODAL, CONFIRMATION, ERROR, SHOW_CONFIRMATION_MODAL, SHOW_ERROR_MODAL} from "../constants/modalConstants";
 
 export const showConfirmationModal = (message, callBack) => ({
     type: SHOW_CONFIRMATION_MODAL,
@@ -7,6 +7,16 @@ export const showConfirmationModal = (message, callBack) => ({
         modalProps: {
             message: message,
             callBack: callBack
+        }
+    }
+});
+
+export const showErrorModal = (message) => ({
+    type: SHOW_ERROR_MODAL,
+    data: {
+        modalType: ERROR,
+        modalProps: {
+            message: message
         }
     }
 });

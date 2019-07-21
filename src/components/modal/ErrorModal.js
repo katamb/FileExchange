@@ -2,7 +2,7 @@ import React from 'react'
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 
-export default class ConfirmationModal extends React.Component {
+export default class ErrorModal extends React.Component {
     render = () => (
         <Modal show={this.props.show}
                onHide={this.props.onHide}
@@ -12,17 +12,13 @@ export default class ConfirmationModal extends React.Component {
 
             <Modal.Header closeButton>
                 <Modal.Title id="contained-modal-title-vcenter">
-                    Modal heading
+                    Error
                 </Modal.Title>
             </Modal.Header>
 
             <Modal.Body>
-                <h4>Centered Modal</h4>
-                <p>
-                    Cras mattis consectetur purus sit amet fermentum. Cras justo odio,
-                    dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac
-                    consectetur ac, vestibulum at eros.
-                </p>
+                {this.props.modal &&
+                <p>{this.props.modal.message}</p>}
             </Modal.Body>
 
             <Modal.Footer>
