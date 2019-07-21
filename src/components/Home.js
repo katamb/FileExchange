@@ -1,7 +1,6 @@
 import React from 'react'
 import Button from "react-bootstrap/Button";
-import ConfirmationModal from "./modal/ConfirmationModal";
-import {showConfirmationModal} from "../state/actions";
+import {showConfirmationModal} from "../state/actions/modalActions";
 import {connect} from "react-redux";
 
 class Home extends React.Component {
@@ -20,11 +19,6 @@ class Home extends React.Component {
 
             <Button onClick={this.props.openConfirmationModal}>Open redux modal</Button>
 
-
-            <Button onClick={() => this.setState({showModal: true})}>Open modal</Button>
-            <ConfirmationModal
-                show={this.state.showModal}
-                onHide={() => this.setState({showModal: false})}/>
         </div>
     )
 }
@@ -35,7 +29,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch, ownProps) => {
     return {
-        openConfirmationModal: () => dispatch(showConfirmationModal("msg", "cb"))
+        openConfirmationModal: () => dispatch(showConfirmationModal("msg", () => console.log("yo")))
     }
 };
 

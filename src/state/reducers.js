@@ -1,9 +1,9 @@
 import { combineReducers } from 'redux'
 import { connectRouter } from 'connected-react-router'
-import counterReducer from './counter'
+import modalReducer from './reducers/modalReducer'
 
 const rootReducer = (history) => combineReducers({
-    count: counterReducer,
+    modals: modalReducer,
     router: connectRouter(history)
 });
 
