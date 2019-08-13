@@ -2,8 +2,11 @@ import React from 'react';
 import FileUpload from "../common/FileUpload";
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
+import {showErrorModal, showSuccessModal} from "../../state/actions/modalActions";
+import {connect} from "react-redux";
+import {BACKEND_ADDRESS} from "../mainConstants";
 
-export default class PhotoUpload extends React.Component {
+class PhotoUpload extends React.Component {
 
     constructor(props) {
         super(props);
@@ -24,6 +27,26 @@ export default class PhotoUpload extends React.Component {
         this.setState({photos: newList});
     };
 
+    uploadData = () => {
+        let formData = new FormData();
+        for (let name in this.state.photos) {
+            formData.append("pics", this.state.photos[name]);
+        }
+
+        fetch(`${BACKEND_ADDRESS}/upload/photos`, {
+            method: 'POST',
+            headers: {},
+            body: formData
+        }).then((response) => {
+            if (response.status !== 200) {
+                response.json().then((jsonResponse) => this.props.openErrorModal(jsonResponse.message))
+            } else {
+                this.props.openSuccessModal();
+                this.setState({photos: []});
+            }
+        })
+    };
+
     render = () => (
         <div className="container">
             <div className="row justify-content-center">
@@ -32,7 +55,7 @@ export default class PhotoUpload extends React.Component {
                     <label className="pt-3">Upload photos</label>
                     <FileUpload addFiles={this.addPhotos}/>
                     <div className="text-center my-3">
-                        <Button>Upload images</Button>
+                        <Button onClick={this.uploadData}>Upload images</Button>
                     </div>
 
                 </div>
@@ -50,6 +73,19 @@ export default class PhotoUpload extends React.Component {
         </div>
     )
 }
+
+const mapStateToProps = (state) => {
+    return {};
+};
+
+const mapDispatchToProps = (dispatch, ownProps) => {
+    return {
+        openErrorModal: (msg) => dispatch(showErrorModal("Failed to upload given files. \n Errormessage: " + msg)),
+        openSuccessModal: () => dispatch(showSuccessModal("Files uploaded successfully!"))
+    }
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(PhotoUpload)
 
 class PhotoPreview extends React.Component {
 
@@ -73,10 +109,11 @@ class PhotoPreview extends React.Component {
 
     render = () => (
         <div className="col-sm-6 col-md-4 mb-2">
-            <Card className="cursor-pointer" onClick={() => this.props.removePhoto(this.props.photo.name)}>
+            <Card className="cursor-pointer border-danger-on-hover"
+                  onClick={() => this.props.removePhoto(this.props.photo.name)}>
                 <Card.Img variant="top" src={this.state.photoPreview} alt="Image preview..."/>
-                <Card.Body>
-                    <Card.Title>{this.props.photo.name}</Card.Title>
+                <Card.Body className="p-2 text-center">
+                    <Card.Title className="m-0">{this.props.photo.name}</Card.Title>
                 </Card.Body>
             </Card>
         </div>

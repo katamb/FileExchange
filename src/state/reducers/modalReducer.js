@@ -1,4 +1,4 @@
-import {CLOSE_MODAL, SHOW_CONFIRMATION_MODAL, SHOW_ERROR_MODAL} from "../constants/modalConstants";
+import {CLOSE_MODAL, SHOW_CONFIRMATION_MODAL, SHOW_ERROR_MODAL, SHOW_SUCCESS_MODAL} from "../constants/modalConstants";
 
 const initialState = {
     modal: {
@@ -12,6 +12,8 @@ const modalReducer = (state = initialState, action) => {
         case SHOW_CONFIRMATION_MODAL:
             return action.data;
         case SHOW_ERROR_MODAL:
+            return action.data;
+        case SHOW_SUCCESS_MODAL:
             return action.data;
         case CLOSE_MODAL:
             return action.data;

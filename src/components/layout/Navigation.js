@@ -10,10 +10,10 @@ export default class Navigation extends React.Component {
             <Navbar.Toggle aria-controls="responsive-navbar-nav" />
             <Navbar.Collapse id="responsive-navbar-nav">
                 <Nav className="mr-auto">
-                    <NavDropdown title="Videos">
-                        <NavDropdown.Item href="/videos/upload">Upload</NavDropdown.Item>
-                        <NavDropdown.Item href="/videos/watch">Watch</NavDropdown.Item>
-                    </NavDropdown>
+                    {/*<NavDropdown title="Videos">*/}
+                        {/*<NavDropdown.Item href="/videos/upload">Upload</NavDropdown.Item>*/}
+                        {/*<NavDropdown.Item href="/videos/watch">Watch</NavDropdown.Item>*/}
+                    {/*</NavDropdown>*/}
                     <NavDropdown title="Pictures">
                         <NavDropdown.Item href="/photos/upload">Upload</NavDropdown.Item>
                         <NavDropdown.Item href="/photos/watch">Watch</NavDropdown.Item>

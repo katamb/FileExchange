@@ -2,8 +2,9 @@ import React from 'react'
 import ConfirmationModal from "./../modal/ConfirmationModal";
 import {connect} from "react-redux";
 import {closeModal} from "../../state/actions/modalActions";
-import {CONFIRMATION, ERROR} from "../../state/constants/modalConstants";
+import {CONFIRMATION, ERROR, SUCCESS} from "../../state/constants/modalConstants";
 import ErrorModal from "../modal/ErrorModal";
+import SuccessModal from "../modal/SuccessModal";
 
 class ModalRoot extends React.Component {
 
@@ -25,6 +26,11 @@ class ModalRoot extends React.Component {
             <ErrorModal show={this.props.modalInfo.modalType === ERROR}
                         onHide={() => this.props.closeModal()}
                         modal={this.props.modalInfo.modalProps}/>}
+
+            {this.props.modalInfo &&
+            <SuccessModal show={this.props.modalInfo.modalType === SUCCESS}
+                          onHide={() => this.props.closeModal()}
+                          modal={this.props.modalInfo.modalProps}/>}
         </>
     )
 }

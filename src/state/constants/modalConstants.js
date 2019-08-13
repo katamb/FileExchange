@@ -1,6 +1,8 @@
 export const SHOW_CONFIRMATION_MODAL = "SHOW_CONFIRMATION_MODAL";
+export const SHOW_SUCCESS_MODAL = "SHOW_SUCCESS_MODAL";
 export const SHOW_ERROR_MODAL = "SHOW_ERROR_MODAL";
 export const CLOSE_MODAL = "CLOSE_MODAL";
 
 export const CONFIRMATION = "CONFIRMATION";
 export const ERROR = "ERROR";
+export const SUCCESS = "SUCCESS";

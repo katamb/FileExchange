@@ -10,7 +10,6 @@ export default class FileUpload extends React.Component {
     handleDrop = (e) => {
         e.preventDefault();
         e.stopPropagation();
-        console.log(e.dataTransfer.files)
         if (e.dataTransfer.files && e.dataTransfer.files.length > 0) {
             this.props.addFiles(e.dataTransfer.files);
             e.dataTransfer.clearData();
@@ -21,7 +20,7 @@ export default class FileUpload extends React.Component {
         <div className="file-upload text-center cursor-pointer"
              onDragOver={this.handleDrag}
              onDrop={this.handleDrop}>
-            <label className="w-100 cursor-pointer"
+            <label className="w-100 cursor-pointer bg-white"
                    htmlFor="file-upload">
                 Drag&Drop <br/>
                 or <br/>

@@ -1,3 +1,9 @@
+/*
+https://react-bootstrap.netlify.com/components/cards/#cards
+https://getbootstrap.com/docs/4.1/components/modal/
+https://www.materialpalette.com/colors
+*/
+
 video {
   width: 100%    !important;
   height: auto   !important;
@@ -21,10 +27,15 @@ video {
 }
 
 .file-upload {
-  background: #ffffff;
-  border: 2px darkgray dashed;
+  background: #ffffff !important;
+  border: 2px #9d9d9d dashed;
 }
 
 .cursor-pointer {
   cursor: pointer;
+}
+
+.border-danger-on-hover:hover {
+  border: 2px #ec4a38 solid;
+  opacity: 0.8;
 }
