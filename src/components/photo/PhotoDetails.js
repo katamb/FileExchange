@@ -16,15 +16,16 @@ class PhotoDetails extends React.Component {
     }
 
     getPhotoInfo = () => {
+        console.log(this.props.photoId)
         fetch(`${BACKEND_ADDRESS}/info/photo/${this.props.photoId}`, {
             method: 'GET'
         }).then((response) => {
-            return response.json();
-        }).then((json) => {
-            if (json.status !== 200) {
-                this.props.openErrorModal(json.message);
+            if (response.status !== 200) {
+                this.props.openErrorModal(response.message);
             } else {
-                this.setState({photo: json});
+                response.json().then((json) => {
+                    this.setState({photo: json});
+                });
             }
         })
     };
@@ -52,15 +53,21 @@ class PhotoDetails extends React.Component {
         <div className="container-fluid">
             <div className="row justify-content-center">
                 <div className="col-md-10 col-sm-12">
-                    <Card className="py-3">
-                        <Card.Img src={`${BACKEND_ADDRESS}/get/photo/${this.props.photoId}`}
+                    <Card className="mx-auto my-3">
+                        <Card.Img className="max-img-height"
+                                  src={`${BACKEND_ADDRESS}/get/photo/${this.props.photoId}`}
                                   alt="Image preview..."/>
                         <Card.Body>
                             <Card.Title>{this.state.photo.originalFileName}</Card.Title>
-                            <a href={`${BACKEND_ADDRESS}/download/photo/${this.props.photoId}`}>
-                                <Button variant="primary">Download</Button>
-                            </a>
-                            <Button className="ml-auto" variant="danger" onClick={this.confirmDelete}>Delete</Button>
+
+                            <div className="row">
+                                <a className="ml-2"
+                                   href={`${BACKEND_ADDRESS}/download/photo/${this.props.photoId}`}>
+                                    <Button variant="primary">Download</Button>
+                                </a>
+                                <Button className="mr-2 ml-auto" variant="danger"
+                                        onClick={this.confirmDelete}>Delete</Button>
+                            </div>
                         </Card.Body>
                     </Card>
                 </div>

@@ -20,7 +20,7 @@ export default class Home extends React.Component {
         }).then((response) => {
             return response.json();
         }).then((json) => {
-            this.setState({freeSpace: parseFloat(json)});
+            this.setState({freeSpace: parseFloat(json).toFixed(2)});
         })
     };
 
@@ -30,7 +30,7 @@ export default class Home extends React.Component {
         }).then((response) => {
             return response.json();
         }).then((json) => {
-            this.setState({totalSpace: parseFloat(json)});
+            this.setState({totalSpace: parseFloat(json).toFixed(2)});
 
         })
     };
@@ -41,22 +41,25 @@ export default class Home extends React.Component {
                 <div className="col-12 text-center">
                     <h1>File exchanging app</h1>
 
-                    <h3 className="pt-3">Available space on raspberry</h3>
-                    <Doughnut data={{
-                        datasets: [{
-                            data: [
-                                this.state.freeSpace,
-                                this.state.totalSpace - this.state.freeSpace],
-                            backgroundColor: [
-                                '#00e5ff',
-                                '#ff9100'
+                    <h3 className="pt-3">Available space on device</h3>
+                    <div className="graph-wrapper mx-auto">
+                        <Doughnut data={{
+                            datasets: [{
+                                data: [
+                                    this.state.freeSpace,
+                                    (this.state.totalSpace - this.state.freeSpace).toFixed(2)
+                                ],
+                                backgroundColor: [
+                                    '#00e5ff',
+                                    '#ff9100'
+                                ]
+                            }],
+                            labels: [
+                                'Free space (gb)',
+                                'Used space (gb)'
                             ]
-                        }],
-                        labels: [
-                            'Free space (gb)',
-                            'Used space (gb)'
-                        ]
-                    }}/>
+                        }}/>
+                    </div>
                 </div>
             </div>
         </div>

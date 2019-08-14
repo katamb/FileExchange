@@ -39,3 +39,11 @@ video {
   border: 2px #ec4a38 solid;
   opacity: 0.8;
 }
+
+.graph-wrapper {
+  max-width: 800px;
+}
+
+.max-img-height {
+  max-height: 90vh;
+}

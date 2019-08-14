@@ -5,12 +5,14 @@ import Button from "react-bootstrap/Button";
 import {showErrorModal, showSuccessModal} from "../../state/actions/modalActions";
 import {connect} from "react-redux";
 import {BACKEND_ADDRESS} from "../mainConstants";
+import Spinner from "react-bootstrap/Spinner";
 
 class PhotoUpload extends React.Component {
 
     constructor(props) {
         super(props);
         this.state = {
+            loading: false,
             photos: []
         }
     }
@@ -28,6 +30,7 @@ class PhotoUpload extends React.Component {
     };
 
     uploadData = () => {
+        this.setState({loading: true});
         let formData = new FormData();
         for (let name in this.state.photos) {
             formData.append("pics", this.state.photos[name]);
@@ -44,6 +47,7 @@ class PhotoUpload extends React.Component {
                 this.props.openSuccessModal();
                 this.setState({photos: []});
             }
+            this.setState({loading: false});
         })
     };
 
@@ -54,9 +58,27 @@ class PhotoUpload extends React.Component {
 
                     <label className="pt-3">Upload photos</label>
                     <FileUpload addFiles={this.addPhotos}/>
+
+                    {!this.state.loading &&
+                        <div className="text-center my-3">
+                            <Button onClick={this.uploadData}>Upload images</Button>
+                        </div>
+                    }
+
+                    {this.state.loading &&
                     <div className="text-center my-3">
-                        <Button onClick={this.uploadData}>Upload images</Button>
+                        <Button disabled>
+                            <Spinner
+                                as="span"
+                                animation="border"
+                                size="sm"
+                                role="status"
+                                aria-hidden="true"
+                            />
+                            <span>&nbsp;Uploading...</span>
+                        </Button>
                     </div>
+                    }
 
                 </div>
                 <div className="col-sm-12 col-md-11 col-lg-10 col-xl-10">
