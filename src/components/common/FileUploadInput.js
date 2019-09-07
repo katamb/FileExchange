@@ -1,6 +1,6 @@
 import React from "react";
 
-export default class FileUpload extends React.Component {
+export default class FileUploadInput extends React.Component {
 
     handleDrag = (e) => {
         e.preventDefault();

@@ -14,7 +14,8 @@ video {
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center center;
-  height: 94vh;
+  align-items: stretch;
+  min-height: 94vh;
 }
 
 .padding-10-percent {
@@ -22,8 +23,12 @@ video {
 }
 
 .main-content {
-  background: #e7eaed;
-  height: 100vh;
+  background: #ebeef1;
+  min-height: 100vh;
+}
+
+.min-h-100 {
+  min-height: 100%;
 }
 
 .file-upload {
@@ -45,5 +50,23 @@ video {
 }
 
 .max-img-height {
-  max-height: 90vh;
+  max-height: 80vh;
+}
+
+.protruding-on-svg {
+  position: absolute;
+  overflow: hidden;
+  top: 34px;
+  left: 34px;
+}
+
+.upload-preview {
+  max-height: 80px;
+}
+
+.on-top-file {
+  position: absolute;
+  text-align: center;
+  top: 30px;
+  width: 100%;
 }

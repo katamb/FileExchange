@@ -1,7 +1,6 @@
 import React from 'react';
 import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
-import NavDropdown from "react-bootstrap/NavDropdown";
 
 export default class Navigation extends React.Component {
     render = () => (
@@ -10,14 +9,8 @@ export default class Navigation extends React.Component {
             <Navbar.Toggle aria-controls="responsive-navbar-nav" />
             <Navbar.Collapse id="responsive-navbar-nav">
                 <Nav className="mr-auto">
-                    {/*<NavDropdown title="Videos">*/}
-                        {/*<NavDropdown.Item href="/videos/upload">Upload</NavDropdown.Item>*/}
-                        {/*<NavDropdown.Item href="/videos/watch">Watch</NavDropdown.Item>*/}
-                    {/*</NavDropdown>*/}
-                    <NavDropdown title="Pictures">
-                        <NavDropdown.Item href="/photos/upload">Upload</NavDropdown.Item>
-                        <NavDropdown.Item href="/photos/watch">Watch</NavDropdown.Item>
-                    </NavDropdown>
+                    <Nav.Link href="/files/upload">Upload files</Nav.Link>
+                    <Nav.Link href="/files/access">Access files</Nav.Link>
                 </Nav>
             </Navbar.Collapse>
         </Navbar>
