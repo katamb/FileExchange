@@ -11,6 +11,7 @@ export default class Navigation extends React.Component {
                 <Nav className="mr-auto">
                     <Nav.Link href="/files/upload">Upload files</Nav.Link>
                     <Nav.Link href="/files/access">Access files</Nav.Link>
+                    <Nav.Link href="/school">School</Nav.Link>
                 </Nav>
             </Navbar.Collapse>
         </Navbar>

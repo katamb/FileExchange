@@ -10,6 +10,7 @@ import FileUpload from "./components/upload/FileUpload";
 import FilesList from "./components/file/FilesList";
 import {Route, Switch} from "react-router-dom";
 import FileDetails from "./components/file/FileDetails";
+import SchoolView from "./components/school/SchoolView";
 
 function App() {
     const store = configureStore();
@@ -28,6 +29,8 @@ function App() {
                             <Route exact path="/files/upload" component={FileUpload}/>
                             <Route exact path="/files/access" component={FilesList}/>
                             <Route exact path="/file/details/:fileId" component={FileDetails}/>
+
+                            <Route exact path="/school" component={SchoolView}/>
 
                             <Route path="/*" component={PageNotFound}/>
                         </Switch>
