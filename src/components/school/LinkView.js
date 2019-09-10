@@ -49,7 +49,7 @@ class LinkView extends React.Component {
                     <ListGroup.Item key={link.linkId} variant="secondary">
                         <div className="d-flex">
                             <div className="mr-auto">
-                                {link.linkContent}
+                                <a href={link.linkUrl}>{link.linkContent}</a>
                             </div>
                         </div>
                     </ListGroup.Item>
